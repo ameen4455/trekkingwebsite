@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% block content %}
+    
+
+
+
+        <div class="col-xs-6">
+                <select class="form-control" name="select1" id="select1">
+        {% for district in district %}
+
+                  <option value="{{district.id}}">{{district.name}}</option>                         
+        {% endfor %}
+                    </select>
+
+              </div>
+              <div class="col-xs-6">
+            <form action="{% url 'item' %}">
+
+                <select class="form-control" name="select2" id="select2">
+                    <option selected="selected" disabled>Objects on page:</option>
+
+            {% for place in places %}
+
+                  <option value="{{place.district.id}}">{{place.place}}</option>
+        
+            {% endfor %}
+              </select>
+              </div>
+              <div class="col-xs-6">
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+          </div>
+
+
+      
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+var $select1 = $( '#select1' ),
+		$select2 = $( '#select2' ),
+    $options = $select2.find( 'option' );
+    
+$select1.on( 'change', function() {
+	$select2.html( $options.filter( '[value="' + this.value + '"]' ) );
+} ).trigger( 'change' );</script>
+
+{% endblock content %}

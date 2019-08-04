@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    
+<div id="content">
+
+
+
+<h1>{{ item.place }}</h1>
+    <div >
+        <img id='pic' src="../{{ item.Image }}" alt="Hi!" />
+    </div>
+
+        {{ item.Description }}
+</div>
+
+{% endblock content %}
